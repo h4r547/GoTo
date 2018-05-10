@@ -2,9 +2,14 @@
 
 if [ "$1" = "-s" ]
 then
-  printf "$2 : $(pwd)" >> goto.conf
+  echo "Bookmark Name: "
+  read bm
+  printf "$bm : $(pwd)" >> ~/GoTo/goto.conf
   echo "Save"
 elif [ "$1" = "-g" ]
 then
-  loc=$(grep -w "$2" ~/GoTo/goto.conf | cut -d ':' -f 2)
+  echo "Where to go? "
+  read bm
+  loc=$(grep -w "$bm" ~/GoTo/goto.conf | cut -d ':' -f 2)
+  cd $loc
 fi
