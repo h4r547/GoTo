@@ -1,0 +1,136 @@
+Problem Statement: Navigating a file system via terminal is a tedious process.
+Especially, if after a bunch of cd an ls commands, if you end up at the wrong
+location. So to deal with this, I've written a script that can store location
+bookmarks.
+
+The script uses the following commands:
+
+Name of command: grep
+grep is used to search for a particular pattern in a file, and return the lines
+that contain that pattern.
+
+Example of its usage:
+
+-bash-4.2$ cat examplefile.txt
+this is line 1 UNIX UNIX
+this is line 2 unix
+
+-bash-4.2$ grep unix examplefile.txt
+this is line 2 unix
+
+Some Additional Options for the command
+-i : Ignores Case
+-bash-4.2$ grep -i unix examplefile.txt
+this is line 1 UNIX UNIX
+this is line 2 unix
+
+-c : counts the number of lines that contain the said pattern
+-bash-4.2$ grep -c unix examplefile.txt
+1
+
+-v : returns the lines thta do not contain the said pattern
+-bash-4.2$ grep -v unix examplefile.txt
+this is line 1 UNIX UNIX
+
+
+Name of Command: pwd
+pwd is used to print/ return the current working directory.
+
+Example of it's usage:
+-bash-4.2$ pwd
+/home/prateekpisat1
+
+
+Name of Command: cd
+cd is used to move to another directory.
+
+Example of its usage:
+-bash-4.2$ pwd
+/home/prateekpisat1
+-bash-4.2$ cd newDir
+-bash-4.2$ pwd
+/home/prateekpisat1/newDir 
+
+
+Name of Command: mv
+mv is used to replace one file with another
+
+Example of its usage:
+-bash-4.2$ ls
+file1
+-bash-4.2$ mv file1 file2
+-bash-4.2$ ls
+file2
+
+Name of command: echo
+echo is used to print a message/ data to the terminal.
+
+Example of its usage:
+-bash-4.2$ echo "Hello World."
+Hello World.
+
+
+Name of Command: read
+read is used as prompt to accept for the user.
+
+Example of its usage:
+-bash-4.2$ read x
+12
+-bash-4.2$ echo $x
+-bash-4.2$ 12
+
+******************************************************************************
+*BEFORE RUNNING THE SCRIPT*
+Each shell script executes in it's own sub-shell.
+So, commands such as "cd" won't affect the parent-shell.
+
+To avoid this we source the script instead of running it.
+Sourcing (done by . or source) causes the script to be executed in the same
+shell instead of running in its own sub-shell.
+
+1. Instead of running the script as ./script-name, use:
+   . ./script-name
+*******************************************************************************
+
+
+Here's a script that can store location bookmarks as well as navigate to
+bookmarked locations.
+
+The script expects a command line argument.
+"-s" to bookmark the current location.
+"-g" to navigate to a bookmarked location.
+
+#!/bin/bash
+if [ "$1" = "-s" ]
+then
+  echo "Bookmark Name: "
+  read bm
+  if [ $(grep -c "$bm " ~/GoTo/goto.conf)  = 0 ]
+  then
+    printf "$bm : $(pwd)" >> ~/GoTo/goto.conf
+    echo "Save"
+  else
+    echo "Bookmark Already Exists"
+  fi
+elif [ "$1" = "-g" ]
+then
+  echo "Where to go? "
+  read bm
+  if [ $(grep -c -i "$bm " ~/GoTo/goto.conf)  = 0 ]
+  then
+    echo "Bookmark doesn't exist"
+  else
+    loc=$(grep -i "$bm " ~/GoTo/goto.conf | cut -d ':' -f 2)
+    if [ -d $loc ]
+    then
+      cd $loc
+    else
+      echo "The directory does not exist."
+      grep -v "$loc" ~/GoTo/goto.conf > temp.txt
+      mv temp.txt ~/GoTo/goto.conf
+      echo "The entry has been deleted."
+    fi
+  fi
+else
+  echo "Invalid Option. Use '-s' to save this location. Use '-g' to goto a location"
+fi
