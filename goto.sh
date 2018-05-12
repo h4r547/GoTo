@@ -1,13 +1,14 @@
 #!/bin/bash
-
 if [ "$1" = "-s" ]
 then
   echo "Bookmark Name: "
   read bm
+  mkdir -p ~/GoTo
+  (cd ~/GoTo && touch goto.conf)
   if [ $(grep -c "$bm " ~/GoTo/goto.conf)  = 0 ]
   then
-    printf "$bm : $(pwd)" >> ~/GoTo/goto.conf
-    echo "Save"
+    echo "$bm : $(pwd)" >> ~/GoTo/goto.conf
+    echo "Saved"
   else
     echo "Bookmark Already Exists"
   fi
