@@ -122,7 +122,7 @@ else
   echo "Invalid Option. Use '-s' to save this location. Use '-g' to goto a location"
 fi
 
-How to run the SCRIPT
+How to run the SCRIPT and an example run.
 -bash-4.2$ . ./goto.sh -s
 Bookmark Name:
 goto
