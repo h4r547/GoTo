@@ -55,6 +55,23 @@ Example of its usage:
   -bash-4.2$ echo $x
   -bash-4.2$ 12
 
+7. Name of command: mkdir
+mkdir is used to make a new directory.
+
+Example of its usage:
+  -bash-4.2$ mkdir newDir
+  -bash-4.2$ cd newDir
+  -bash-4.2$ pwd
+  /home/prateekpisat1/newDir
+
+8. Name of command: touch
+ touch is used to create a new if file if it does not already exist.
+
+Example of its usage:
+  -bash-4.2$ touch goto.conf
+  -bash-4.2$ ls
+  goto.conf
+
 ************************************************************************
 *BEFORE RUNNING THE SCRIPT*
 Each shell script executes in its own sub-shell. So, commands such as "cd" won't affect the parent-shell.
@@ -106,12 +123,15 @@ else
 fi
 
 How to run the SCRIPT
-~/Desktop/CS5600/GoTo . ./goto.sh -s
-Bookmark name:
+-bash-4.2$ . ./goto.sh -s
+Bookmark Name:
 goto
 Saved
-
-~/Desktop/CS5600 . ./GoTo/goto.sh -g
+-bash-4.2$ pwd
+/home/prateekpisat1/CS5600/GoTo
+-bash-4.2$ cd ..
+-bash-4.2$ . ./GoTo/goto.sh -g
 Where to go?
 goto
-~/Desktop/CS5600/GoTo
+-bash-4.2$ pwd
+/home/prateekpisat1/CS5600/GoTo
