@@ -11,6 +11,23 @@ Example of its usage:
 
   -bash-4.2$ grep Computer examplefile.txt
   this is line 2 Computer Systems
+Some additional options:
+
+-i: allows you to search for words in a case-insensitive manner:
+
+  $ grep -i computer examplefile.txt
+  this is line 1 Computer Systems
+  this is line 2 computer
+
+-c: Another option instructs grep to count the number of times a pattern appears.
+
+  $ grep -c computer examplefile.txt
+  1
+
+-v: You can search for lines that don't contain a pattern by adding the "-v" option.
+
+  $ grep -v unix examplefile.txt
+  this is line 1 Computer Systems
 
 2. Name of Command: pwd
 pwd is used to print/ return the current working directory.
@@ -72,19 +89,47 @@ Example of its usage:
   -bash-4.2$ ls
   goto.conf
 
+9. Name of command: cut
+cut in UNIX is used cutting sections from each line of files.
+
+Examples of its usage:
+   -bash-4.2$ echo 'baz' | cut -b 2
+    a
+   -bash-4.2$echo 'baz' | cut -b 1-2
+    ba
+
+
 ************************************************************************
 *BEFORE RUNNING THE SCRIPT*
 Each shell script executes in its own sub-shell. So, commands such as "cd" won't affect the parent-shell.
+Since bookmarks are primarily depends on the cd command, we need to ensure that the command can be run in a shell-script, and performs the required task.
 To avoid this, we source the script instead of running it. Sourcing (done by. or source) causes the script to be executed in the same shell instead of running in its own sub-shell.
+Sourcing the script does not create a new shell. All commands are run in the current shell and changes to the environment take effect in the current shell.
 
 Instead of running the script as ./script-name, use:
-   . ./script-name
+   . ./script-name.sh OR source ./scriptname.sh
 ************************************************************************
 Here is a shell script that stores and loads file system locations bookmarks.
 
 The script expects a command line argument.
 "-s" to bookmark the current location.
 "-g" to navigate to a bookmarked location.
+
+How to run the SCRIPT and an example run.
+-bash-4.2$ . ./goto.sh -s
+Bookmark Name:
+goto
+Saved
+-bash-4.2$ pwd
+/home/prateekpisat1/CS5600/GoTo
+-bash-4.2$ cd ..
+-bash-4.2$ pwd
+/home/prateekpisat1/CS5600
+-bash-4.2$ . ./GoTo/goto.sh -g
+Where to go?
+goto
+-bash-4.2$ pwd
+/home/prateekpisat1/CS5600/GoTo
 
 if [ "$1" = "-s" ]
 then
@@ -121,17 +166,3 @@ then
 else
   echo "Invalid Option. Use '-s' to save this location. Use '-g' to goto a location"
 fi
-
-How to run the SCRIPT and an example run.
--bash-4.2$ . ./goto.sh -s
-Bookmark Name:
-goto
-Saved
--bash-4.2$ pwd
-/home/prateekpisat1/CS5600/GoTo
--bash-4.2$ cd ..
--bash-4.2$ . ./GoTo/goto.sh -g
-Where to go?
-goto
--bash-4.2$ pwd
-/home/prateekpisat1/CS5600/GoTo

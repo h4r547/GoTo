@@ -5,7 +5,7 @@ then
   read bm
   mkdir -p ~/GoTo
   (cd ~/GoTo && touch goto.conf)
-  if [ $(grep -c "$bm " ~/GoTo/goto.conf)  = 0 ]
+  if [ $(grep -c -i "$bm " ~/GoTo/goto.conf)  = 0 ]
   then
     echo "$bm : $(pwd)" >> ~/GoTo/goto.conf
     echo "Saved"
