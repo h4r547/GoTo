@@ -48,7 +48,7 @@ then
   echo "use -g to goto a bookmarked location."
   echo "use -l to list all currently saved bookmarks."
   echo "use -r to delete a currently saved bookmark."
-  echo "use -e to edit a currently saved bookmark"
+  echo "use -e to edit a currently saved bookmark."
 elif [ "$1" = "-e" ]
 then
   mkdir -p ~/GoTo

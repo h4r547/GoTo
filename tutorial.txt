@@ -91,10 +91,40 @@ Sourcing the script does not create a new shell. All commands are run in the cur
 Instead of running the script as ./script-name, use:
    . ./script-name.sh OR source ./scriptname.sh
 ************************************************************************
-
 To run the script:
 $ . ./goto.sh -s -> to Save the current working directory.
 $ . ./goto.sh -g -> to go to a saved bookmark.
 $ . ./goto.sh -l -> to list all the saved bookmarks.
 $ . ./goto.sh -r -> to delete a saved bookmark.
 $ . ./goto.sh -e -> to edit a saved bookmark.
+
+A Demo Run:
+$ pwd
+/home/prateek/GoTo
+$ . ./goto.sh -s
+Enter Bookmark Name:
+goto
+Saved
+$ . ./goto.sh -l
+goto : /home/prateek/GoTo
+$ . ./goto.sh -e
+Enter Bookmark Name:
+goto
+Enter new bookmark name.
+newgoto
+Edit Complete.
+$ . ./goto.sh -l
+newgoto : /home/prateek/GoTo
+$ cd ..
+$ pwd
+/home/prateek
+$ . ./GoTo/goto.sh -g
+Where to go?
+newgoto
+$ pwd
+/home/prateek/GoTo
+$ . ./goto.sh -r
+Enter Bookmark name
+newgoto
+$ . ./goto.sh -l
+$
