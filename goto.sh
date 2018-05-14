@@ -48,7 +48,7 @@ then
   echo "use -g to goto a bookmarked location."
   echo "use -l to list all currently saved bookmarks."
   echo "use -r to delete a currently saved bookmark."
-  echo "use -e tp edit a currently saved bookmark"
+  echo "use -e to edit a currently saved bookmark"
 elif [ "$1" = "-e" ]
 then
   mkdir -p ~/GoTo
@@ -61,6 +61,8 @@ then
   else
     grep -v -i "$bm" ~/GoTo/goto.conf > temp.txt
     mv temp.txt ~/GoTo/goto.conf
+    echo "Enter new bookmark name."
+    read bm
     echo "$bm : $(pwd)" >> ~/GoTo/goto.conf
     echo "Edit Complete."
   fi
