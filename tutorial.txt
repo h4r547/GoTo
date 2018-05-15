@@ -81,6 +81,12 @@ cut in UNIX is used cutting sections from each line of files.
 Examples of its usage:
   $ echo 'baz' | cut -b 2
   a
+
+Certain Shorthand Operators used in the Script:
+
+1. > : redirects output to a file, overwriting the file.
+
+2. >> : redirects output to a file appending the redirected output at the end.
 ************************************************************************
 *BEFORE RUNNING THE SCRIPT*
 Each shell script executes in its own sub-shell. So, commands such as "cd" won't affect the parent-shell.
