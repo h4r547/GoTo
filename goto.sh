@@ -39,7 +39,7 @@ elif [ "$1" = "-r" ] #if the user wants to delete a saved bookmark.
 then
   echo "Enter Bookmark name"
   read bm
-  grep -v -i "$bm" ~/GoTo/goto.conf > temp.txt #deleting the entry and saving the results in a temporary file.
+  grep -v -i "$bm " ~/GoTo/goto.conf > temp.txt #deleting the entry and saving the results in a temporary file.
   mv temp.txt ~/GoTo/goto.conf #overwritting the config file with the updated entries.
 elif [ "$1" = "-h" ]  #if the user wants help on how to use the script.
 then
@@ -60,11 +60,11 @@ then
     echo "Bookmark does not exist. Use -s to save a bookmark."
   else
     loc=$(grep -i "$bm " ~/GoTo/goto.conf | cut -d ':' -f 2) #loc holds the directory location for entered bookmark name.
-    grep -v -i "$bm" ~/GoTo/goto.conf > temp.txt #deleting the entry associated with the entered bookmark name and save it in a temporary file,
+    grep -v -i "$bm " ~/GoTo/goto.conf > temp.txt #deleting the entry associated with the entered bookmark name and save it in a temporary file,
     mv temp.txt ~/GoTo/goto.conf #overwritting the config file with the updated data.
     echo "Enter new bookmark name."
-    read bm #read the new bookmark name.
-    echo "$bm : $loc" >> ~/GoTo/goto.conf #save the new entry in the config file.
+    read newbm #read the new bookmark name.
+    echo "$newbm : $loc" >> ~/GoTo/goto.conf #save the new entry in the config file.
     echo "Edit Complete."
   fi
 else #if the user enters an Invalid option.
