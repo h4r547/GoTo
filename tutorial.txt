@@ -1,5 +1,8 @@
-Problem Statement: Navigating a file system via terminal is a tedious process. Especially, if after a bunch of cd and ls commands, if you end up at the wrong location.
-So, to deal with this, I've written a script that can store location bookmarks and navigate to those locations as required.
+Problem Statement: Navigating a file system via terminal is a tedious process.
+Especially, if after a bunch of cd and ls commands, if you end up at the wrong
+location.
+So, to deal with this, I've written a script that can store location bookmarks
+and navigate to those locations as required.
 
 1. Name of commands: cat
 cat command is used to display the contents of a file
@@ -9,8 +12,11 @@ Example of its usage:
   this is line 1 Computer Systems
   this is line 2 computer
 
+*************************************************************************
+
 2. Name of command: grep
-grep is used to search for a particular pattern in a file, and return the lines that contain that pattern.
+grep is used to search for a particular pattern in a file, and return the lines
+that contain that pattern.
 
 Example of its usage:
   $ grep Computer examplefile.txt
@@ -20,7 +26,10 @@ Some additional options:
 
 -i: Allows you to search for words in a case-insensitive manner:
 -c: Another option instructs grep to count the number of times a pattern appears.
--v: You can search for lines that don't contain a pattern by adding the "-v" option.
+-v: You can search for lines that don't contain a pattern by adding the "-v"
+option.
+
+*************************************************************************
 
 3. Name of Command: pwd
 pwd is used to print/ return the current working directory.
@@ -29,6 +38,8 @@ Example of its usage:
   $ pwd
   /home/prateekpisat1
 
+*************************************************************************
+
 4. Name of Command: cd
 cd is used to move to another directory.
 
@@ -36,10 +47,14 @@ cd is used to move to another directory.
 mkdir is used to make a new directory
 
 Example of their usage:
+  $ pwd
+  $ /home/prateekpisat1
   $ mkdir newDir
   $ cd newDir/
-  newDir$
+  $ pwd
+  $ /home/prateekpisat1/newDir
 
+*************************************************************************
 
 6. Name of Command: mv
 mv is used to replace one file with another
@@ -51,12 +66,16 @@ Example of its usage:
   $ ls
   file2
 
+*************************************************************************
+
 7. Name of command: echo
 echo is used to print a message/ data to the terminal.
 
 Example of its usage:
   $ echo "Hello World."
   Hello World.
+
+*************************************************************************
 
 8. Name of Command: read
 read is used as prompt to accept for the user.
@@ -67,13 +86,18 @@ Example of its usage:
   $ echo $x
   $ 12
 
+*************************************************************************
+
 9. Name of command: touch
  touch is used to create a new if file if it does not already exist.
 
 Example of its usage:
+  $ ls
   $ touch goto.conf
   $ ls
   goto.conf
+
+*************************************************************************
 
 10. Name of command: cut
 cut in UNIX is used cutting sections from each line of files.
@@ -82,6 +106,11 @@ Examples of its usage:
   $ echo 'baz' | cut -b 2
   a
 
+Some additional options used in the script:
+-d : To cut using a delimiter use the -d option.
+
+*************************************************************************
+
 Certain Shorthand Operators used in the Script:
 
 1. > : redirects output to a file, overwriting the file.
@@ -89,10 +118,15 @@ Certain Shorthand Operators used in the Script:
 2. >> : redirects output to a file appending the redirected output at the end.
 ************************************************************************
 *BEFORE RUNNING THE SCRIPT*
-Each shell script executes in its own sub-shell. So, commands such as "cd" won't affect the parent-shell.
-Since bookmarks are primarily depends on the cd command, we need to ensure that the command can be run in a shell-script, and performs the required task.
-To avoid this, we source the script instead of running it. Sourcing (done by. or source) causes the script to be executed in the same shell instead of running in its own sub-shell.
-Sourcing the script does not create a new shell. All commands are run in the current shell and changes to the environment take effect in the current shell.
+Each shell script executes in its own sub-shell. So, commands such as "cd" won't
+ affect the parent-shell.
+Since the script primarily depends on the 'cd' command, we need to ensure that
+the command can be run in a shell-script, and performs the required task.
+To avoid the problem, we source the script instead of running it.
+Sourcing (done by. or source) causes the script to be executed in the same shell
+ instead of running in its own sub-shell.
+Sourcing the script does not create a new shell. All commands are run in the
+current shell and changes to the environment take effect in the current shell.
 
 Instead of running the script as ./script-name, use:
    . ./script-name.sh OR source ./scriptname.sh
@@ -103,6 +137,7 @@ $ . ./goto.sh -g -> to go to a saved bookmark.
 $ . ./goto.sh -l -> to list all the saved bookmarks.
 $ . ./goto.sh -r -> to delete a saved bookmark.
 $ . ./goto.sh -e -> to edit a saved bookmark.
+$ . ./goto.sh -h -> to get help on how to use the script.
 
 A Demo Run:
 $ pwd
