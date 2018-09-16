@@ -17,40 +17,40 @@ Instead of running the script as ./script-name, use:
    . ./script-name.sh OR source ./scriptname.sh
 ************************************************************************
 To run the script:
-$ . ./goto.sh -s -> to Save the current working directory.
-$ . ./goto.sh -g -> to go to a saved bookmark.
-$ . ./goto.sh -l -> to list all the saved bookmarks.
-$ . ./goto.sh -r -> to delete a saved bookmark.
-$ . ./goto.sh -e -> to edit a saved bookmark.
-$ . ./goto.sh -h -> to get help on how to use the script.
+$ . ./goto.sh -s -> to Save the current working directory.<br>
+$ . ./goto.sh -g -> to go to a saved bookmark.<br>
+$ . ./goto.sh -l -> to list all the saved bookmarks.<br>
+$ . ./goto.sh -r -> to delete a saved bookmark.<br>
+$ . ./goto.sh -e -> to edit a saved bookmark.<br>
+$ . ./goto.sh -h -> to get help on how to use the script.<br>
 
-A Demo Run:
-$ pwd
-/home/prateek/GoTo
-$ . ./goto.sh -s
-Enter Bookmark Name:
-goto
-Saved
-$ . ./goto.sh -l
-goto : /home/prateek/GoTo
-$ . ./goto.sh -e
-Enter Bookmark Name:
-goto
-Enter new bookmark name.
-newgoto
-Edit Complete.
-$ . ./goto.sh -l
-newgoto : /home/prateek/GoTo
-$ cd ..
-$ pwd
-/home/prateek
-$ . ./GoTo/goto.sh -g
-Where to go?
-newgoto
-$ pwd
-/home/prateek/GoTo
-$ . ./goto.sh -r
-Enter Bookmark name
-newgoto
-$ . ./goto.sh -l
+A Demo Run:<br>
+$ pwd<br>
+/home/prateek/GoTo<br>
+$ . ./goto.sh -s<br>
+Enter Bookmark Name:<br>
+goto<br>
+Saved<br>
+$ . ./goto.sh -l<br>
+goto : /home/prateek/GoTo<br>
+$ . ./goto.sh -e<br>
+Enter Bookmark Name:<br>
+goto<br>
+Enter new bookmark name.<br>
+newgoto<br>
+Edit Complete.<br>
+$ . ./goto.sh -l<br>
+newgoto : /home/prateek/GoTo<br>
+$ cd ..<br>
+$ pwd<br>
+/home/prateek<br>
+$ . ./GoTo/goto.sh -g<br>
+Where to go?<br>
+newgoto<br>
+$ pwd<br>
+/home/prateek/GoTo<br>
+$ . ./goto.sh -r<br>
+Enter Bookmark name<br>
+newgoto<br>
+$ . ./goto.sh -l<br>
 $
